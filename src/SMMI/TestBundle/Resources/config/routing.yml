@@ -1,0 +1,5 @@
+# src/SMMI/TestBundle/Resources/config/routing.yml
+
+smmi_test_home:
+    path:     /
+    defaults: { _controller: SMMITestBundle:Advert:index }

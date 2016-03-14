@@ -1,0 +1,4 @@
+services:
+#    smmi_quizz.example:
+#        class: SMMI\QuizzBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

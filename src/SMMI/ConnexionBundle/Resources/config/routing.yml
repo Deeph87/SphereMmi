@@ -1,0 +1,3 @@
+smmi_connexion:
+    path:     /
+    defaults: { _controller: SMMIConnexionBundle:Connexion:index }

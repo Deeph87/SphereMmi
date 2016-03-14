@@ -1,0 +1,20 @@
+smmi_users:
+    resource: "@SMMIUsersBundle/Resources/config/routing.yml"
+    prefix:   /
+
+smmi_index:
+    resource: "@SMMIIndexBundle/Resources/config/routing.yml"
+    prefix:   /index
+
+smmi_connexion:
+    resource: "@SMMIConnexionBundle/Resources/config/routing.yml"
+    prefix:   /connexion
+
+smmi_quizz:
+    resource: "@SMMIQuizzBundle/Resources/config/routing.yml"
+    prefix:   /quizz
+
+smmi_test:
+    resource: "@SMMITestBundle/Resources/config/routing.yml"
+    prefix:   /platform
+

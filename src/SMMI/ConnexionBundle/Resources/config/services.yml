@@ -1,0 +1,4 @@
+services:
+#    smmi_connexion.example:
+#        class: SMMI\ConnexionBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

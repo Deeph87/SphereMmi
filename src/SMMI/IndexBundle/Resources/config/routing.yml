@@ -1,0 +1,3 @@
+smmi_index_homepage:
+    path:     /
+    defaults: { _controller: SMMIIndexBundle:Index:index }
