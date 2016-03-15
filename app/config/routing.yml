@@ -1,6 +1,14 @@
+smmi_exercices:
+    resource: "@SMMIExercicesBundle/Resources/config/routing.yml"
+    prefix:   /exercices
+
+smmi_cours:
+    resource: "@SMMICoursBundle/Resources/config/routing.yml"
+    prefix:   /cours
+
 smmi_users:
     resource: "@SMMIUsersBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /users
 
 smmi_index:
     resource: "@SMMIIndexBundle/Resources/config/routing.yml"

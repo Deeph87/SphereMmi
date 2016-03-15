@@ -1,0 +1,52 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+
+    {% block smmiusers_profil %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        var ocw = $('.object-content').width();
+        var ratio = ocw/4;
+        $('.bloc').css({'height':ratio+'px'});
+        $('.bloc').css({'margin-bottom':ocw*1.7/100+'px'});
+        $(window).on('resize', function() {
+            ocw = $('.object-content').width();
+            var ratio = ocw/4;
+            $('.bloc').css({'height':ratio+'px'});
+            $('.bloc').css({'margin-bottom':ocw*1.7/100+'px'});
+        });
+
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > $('.main-header').height() - 60) {
+                $('.main-navbar').addClass('navbar-fixed');
+            }
+            else {
+                $('.main-navbar').removeClass('navbar-fixed');
+            }
+        });$(document).ready(function () {
+            // Load the first 3 list items from another HTML file
+            //$('#myList').load('externalList.html li:lt(3)');
+            var items =  $('.bloc').size();
+            var shown =  8;
+            $('.bloc').hide();
+            $('.bloc:lt('+ shown +')').show();
+            // $('#showLess').hide();
+            $('#loadMore').click(function () {
+                // $('#showLess').show();
+                shown = $('.bloc:visible').size()+8;
+                if(shown < items) {$('.bloc:lt('+shown+')').show();}
+                else {$('.bloc:lt('+items+')').show();
+                    $('#loadMore').hide();
+                }
+            });
+            // $('#showLess').click(function () {
+            //   $('.bloc').not(':lt(3)').hide();
+            // });
+        });
+    </script>
+{% endblock %}
