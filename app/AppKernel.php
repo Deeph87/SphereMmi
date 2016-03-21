@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new SMMI\ConnexionBundle\SMMIConnexionBundle(),
             new SMMI\IndexBundle\SMMIIndexBundle(),
             new SMMI\UsersBundle\SMMIUsersBundle(),
+            new SMMI\CoursBundle\SMMICoursBundle(),
+            new SMMI\ExercicesBundle\SMMIExercicesBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

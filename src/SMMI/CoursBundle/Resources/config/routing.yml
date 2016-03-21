@@ -1,0 +1,4 @@
+smmi_cours_homepage:
+    path:     /
+    defaults: { _controller: SMMICoursBundle:Cours:index }
+
