@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PublishConfigData" serverName="sphereMmi">
     <serverData>
-      <paths name="digital_ocean_root">
+      <paths name="sphereMmi">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
