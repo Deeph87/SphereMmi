@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new SMMI\UsersBundle\SMMIUsersBundle(),
             new SMMI\CoursBundle\SMMICoursBundle(),
             new SMMI\ExercicesBundle\SMMIExercicesBundle(),
+            new SMMI\UserBundle\SMMIUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

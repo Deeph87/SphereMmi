@@ -1,3 +1,7 @@
+smmi_user:
+    resource: "@SMMIUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 smmi_exercices:
     resource: "@SMMIExercicesBundle/Resources/config/routing.yml"
     prefix:   /exercices
@@ -26,3 +30,5 @@ smmi_test:
     resource: "@SMMITestBundle/Resources/config/routing.yml"
     prefix:   /platform
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
