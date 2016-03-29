@@ -1,3 +1,0 @@
-smmi_exercices_homepage:
-    path:     /
-    defaults: { _controller: SMMIExercicesBundle:Exercices:index }

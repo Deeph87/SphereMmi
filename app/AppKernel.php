@@ -15,15 +15,12 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new SMMI\TestBundle\SMMITestBundle(),
             new SMMI\QuizzBundle\SMMIQuizzBundle(),
-            new SMMI\ConnexionBundle\SMMIConnexionBundle(),
             new SMMI\IndexBundle\SMMIIndexBundle(),
-            new SMMI\UsersBundle\SMMIUsersBundle(),
             new SMMI\CoursBundle\SMMICoursBundle(),
-            new SMMI\ExercicesBundle\SMMIExercicesBundle(),
             new SMMI\UserBundle\SMMIUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new SMMI\BackOfficeBundle\SMMIBackOfficeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

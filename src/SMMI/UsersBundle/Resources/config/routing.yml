@@ -1,3 +1,0 @@
-smmi_profil_homepage:
-    path:     /
-    defaults: { _controller: SMMIUsersBundle:Users:index }
