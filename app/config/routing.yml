@@ -1,6 +1,6 @@
 smmi_back_office:
     resource: "@SMMIBackOfficeBundle/Resources/config/routing.yml"
-    prefix:   /ajouter-cours
+    prefix:   /gestion
 
 smmi_index:
     resource: "@SMMIIndexBundle/Resources/config/routing.yml"

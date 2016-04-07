@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CoursController extends Controller
 {
-    public function indexAction()
+    public function listeAction()
     {
-        return $this->render('SMMICoursBundle:Cours:index.html.twig');
+        return $this->render('SMMICoursBundle:Cours:liste.html.twig');
     }
 }
 

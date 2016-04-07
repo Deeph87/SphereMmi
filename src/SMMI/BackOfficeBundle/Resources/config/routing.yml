@@ -1,3 +1,7 @@
-smmi_backoffice_homepage:
+smmi_backoffice_liste:
     path:     /
-    defaults: { _controller: SMMIBackOfficeBundle:Default:index }
+    defaults: { _controller: SMMIBackOfficeBundle:BackOffice:liste }
+
+smmi_backoffice_add:
+    path:     /ajouter-cours
+    defaults: { _controller: SMMIBackOfficeBundle:BackOffice:add }

@@ -1,4 +1,4 @@
-smmi_cours_homepage:
+smmi_cours_liste:
     path:     /
-    defaults: { _controller: SMMICoursBundle:Cours:index }
+    defaults: { _controller: SMMICoursBundle:Cours:liste }
 
