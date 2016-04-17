@@ -8,7 +8,7 @@ smmi_index:
 
 smmi_cours:
     resource: "@SMMICoursBundle/Resources/config/routing.yml"
-    prefix:   /cours
+    prefix:   /
 
 smmi_quizz:
     resource: "@SMMIQuizzBundle/Resources/config/routing.yml"

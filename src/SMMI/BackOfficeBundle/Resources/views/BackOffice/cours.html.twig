@@ -1,0 +1,33 @@
+{% extends "SMMIBackOfficeBundle::layout.html.twig" %}
+
+{% block smmibackoffice_liste %}
+    {% for message in app.session.flashbag.get('notice') %}
+        <p>Message flash : {{ message }}</p>
+    {% endfor %}
+
+    <a href="{{ path('smmi_backoffice_add') }}">Ajouter un cours</a>
+
+
+    <table id="listeBackOffice">
+        <tr>
+            <td>Titre</td>
+            <td>Promo</td>
+            <td>Module</td>
+            <td>Auteur</td>
+            <td>Date</td>
+            <td>Actions</td>
+        </tr>
+
+        {% for cours in listCours %}
+            <tr>
+                <td>{{ cours.titre }}</td>
+                <td>{{ cours.promo }}</td>
+                <td>{{ cours.module }}</td>
+                <td>{{ cours.auteur }}</td>
+                <td>{{ cours.date|date("F jS \\a\\t g:ia") }}</td>
+                <td><a href="#">edit</a> - <a href="#">delete</a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

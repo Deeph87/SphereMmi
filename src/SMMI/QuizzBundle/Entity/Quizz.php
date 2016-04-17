@@ -29,13 +29,6 @@ class Quizz
     private $quizzNom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="quizz_description", type="text")
-     */
-    private $quizzDescription;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="quizz_note", type="integer")
@@ -74,29 +67,6 @@ class Quizz
     public function getQuizzNom()
     {
         return $this->quizzNom;
-    }
-
-    /**
-     * Set quizzDescription
-     *
-     * @param string $quizzDescription
-     * @return Quizz
-     */
-    public function setQuizzDescription($quizzDescription)
-    {
-        $this->quizzDescription = $quizzDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get quizzDescription
-     *
-     * @return string 
-     */
-    public function getQuizzDescription()
-    {
-        return $this->quizzDescription;
     }
 
     /**

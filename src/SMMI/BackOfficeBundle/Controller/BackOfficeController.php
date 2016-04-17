@@ -2,7 +2,8 @@
 
 namespace SMMI\BackOfficeBundle\Controller;
 
-use SMMI\CoursBundle\Entity\Liste;
+use SMMI\CoursBundle\Entity\Cours;
+use SMMI\CoursBundle\Form\CoursType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -20,33 +21,48 @@ class BackOfficeController extends Controller
         // Ici l'utilisateur a les droits suffisant,
         // on peut ajouter une annonce
 
-        return $this->render('SMMIBackOfficeBundle:BackOffice:liste.html.twig');
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('SMMICoursBundle:Cours')
+        ;
+
+        $listCours = $repository->findAll();
+
+        foreach ($listCours as $cours) {
+            // $cours est une instance de Cours
+            $cours->getTitre();
+            $cours->getPromo();
+            $cours->getAuteur();
+            $cours->getModule();
+            $cours->getDate();
+        }
+
+        return $this->render('SMMIBackOfficeBundle:BackOffice:cours.html.twig', array(
+            'listCours' => $listCours
+        ));
     }
 
     public function addAction(Request $request)
     {
-        $liste = new Liste();
-        
-        $form = $this->get('form.factory')->createBuilder('form', $liste)
-            ->add('titre',    'text')
-            ->add('module',   'text')
-            ->add('auteur',   'text')
-            ->add('date',     'date')
-            ->add('online',   'checkbox')
-            ->add('save',     'submit')
-            ->getForm()
-        ;
+        $cours = new Cours();
+        $id = $cours->getId();
+        dump($id);
+        $firstname = $this->getUser()->getFirstname();
+        $lastname = $this->getUser()->getLastname();
+        $rest = substr($firstname, 0,1);
+        $cours->setAuteur($rest.'.'.$lastname);
 
-        $form->handleRequest($request);
+        $form = $this->get('form.factory')->create(new CoursType(), $cours);
 
-        if ($form->isValid()) {
+        if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($liste);
+            $em->persist($cours);
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('notice', 'Cours bien enregistré.');
 
-            return $this->redirect($this->generateUrl('smmi_backoffice_liste', array('id' => $liste->getId())));
+            return $this->redirect($this->generateUrl('smmi_backoffice_liste'));
         }
 
         return $this->render('SMMIBackOfficeBundle:BackOffice:add.html.twig', array(

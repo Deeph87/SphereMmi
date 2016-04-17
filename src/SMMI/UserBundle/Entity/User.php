@@ -29,11 +29,14 @@ class User extends BaseUser
      */
 
     private $lastname;
-
+    
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        
     }
 
     /**

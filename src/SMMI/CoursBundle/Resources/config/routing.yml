@@ -1,4 +1,8 @@
 smmi_cours_liste:
-    path:     /
+    path:     /module/cours
     defaults: { _controller: SMMICoursBundle:Cours:liste }
+
+smmi_cours_module:
+    path:     /module
+    defaults: { _controller: SMMICoursBundle:Cours:module }
 

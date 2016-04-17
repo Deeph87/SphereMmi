@@ -1,0 +1,21 @@
+{% extends "SMMICoursBundle::layout.html.twig" %}
+
+{% block smmicours_liste %}
+    <div class="object">
+        <p>Choisissez votre module</p>
+
+        <div class="object-content course-list">
+            {% for module in listModules %}
+                <div class="bloc course-item">
+                    <a href="pagecour.html">
+                        <span>{{ module.module }}</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="loadMore">
+            <span>Plus de cours</span>
+        </div>
+    </div>
+{% endblock %}

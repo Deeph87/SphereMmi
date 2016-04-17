@@ -15,7 +15,7 @@ class Liste
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -38,6 +38,13 @@ class Liste
     /**
      * @var string
      *
+     * @ORM\Column(name="promo", type="string", length=255)
+     */
+    private $promo;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="module", type="string", length=255)
      */
     private $module;
@@ -53,7 +60,6 @@ class Liste
      * @ORM\Column(name="online", type="boolean")
      */
     private $online = true;
-
 
     /**
      * Get id
@@ -178,5 +184,28 @@ class Liste
     public function getOnline()
     {
         return $this->online;
+    }
+
+    /**
+     * Set promo
+     *
+     * @param string $promo
+     * @return Liste
+     */
+    public function setPromo($promo)
+    {
+        $this->promo = $promo;
+    
+        return $this;
+    }
+
+    /**
+     * Get promo
+     *
+     * @return string 
+     */
+    public function getPromo()
+    {
+        return $this->promo;
     }
 }
