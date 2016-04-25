@@ -36,11 +36,11 @@ class Chapitre
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SMMI\CoursBundle\Entity\Cours", inversedBy="chapitres", cascade={"persist"})
-     * @ORM\JoinColumn(name="cours_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="SMMI\CoursBundle\Entity\Cours", inversedBy="chapitres")
+     * ORM\JoinColumn(nullable=true, name="cours_id", referencedColumnName="id")
      */
     private $cours;
-    
+
     /**
      * Get id
      *
@@ -119,13 +119,4 @@ class Chapitre
     {
         return $this->cours;
     }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cours = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 }

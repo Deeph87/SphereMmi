@@ -1,0 +1,41 @@
+{% extends "SMMIQuizzBundle::layout.html.twig" %}
+
+{% block smmiquizz_repondre %}
+
+    <div class="object-quizz">
+        <span>EXERCICES/ANGLAIS</span>
+
+        {% for flash_message in app.session.flashbag.get('success') %}
+            <div class="flash-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+
+        <h1>{{ quizz.quizznom }}</h1>
+
+        {#<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo dolor cupiditate fugiat aspernatur nisi, itaque! Maiores ipsam expedita, omnis vero labore aut minima illum quo amet provident rem beatae, adipisci.</p></br>#}
+
+        {#<form method="post" action="http://test.fr/">#}
+        <form>
+            {% for quest in questions %}
+                <p>{{ quest.question }}</p>
+                <fieldset id="{{ quest.id }}">
+                    <ul>
+                        {% for rep in reponses %}
+                            {% if rep.questions.id == quest.id  %}
+                                <li><input type="radio" name="{{ quest.id }}" value="{{ rep.reponsesCorrect }}"> {{ rep.reponsesEnnonce }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </fieldset>
+            {% endfor %}
+            <input type="submit" value="Send">
+        </form>
+
+           {# <input type="submit" value="Send">
+        </form>#}
+
+
+    </div>
+
+{% endblock %}

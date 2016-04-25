@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="smmi_user")
+ * @ORM\Table(name="user")
  */
 class User extends BaseUser
 {
@@ -21,14 +21,17 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      */
-
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-
     private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $acces;
     
     /**
      * Constructor
@@ -83,5 +86,28 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Set acces
+     *
+     * @param string $acces
+     * @return User
+     */
+    public function setAcces($acces)
+    {
+        $this->acces = $acces;
+    
+        return $this;
+    }
+
+    /**
+     * Get acces
+     *
+     * @return string 
+     */
+    public function getAcces()
+    {
+        return $this->acces;
     }
 }

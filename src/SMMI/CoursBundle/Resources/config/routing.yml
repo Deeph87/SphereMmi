@@ -1,8 +1,20 @@
-smmi_cours_liste:
-    path:     /module/cours
-    defaults: { _controller: SMMICoursBundle:Cours:liste }
-
 smmi_cours_module:
     path:     /module
     defaults: { _controller: SMMICoursBundle:Cours:module }
+
+smmi_cours_liste:
+    path:     /module/cours/{id}
+    defaults: { _controller: SMMICoursBundle:Cours:liste }
+
+smmi_cours_chapitre:
+    path:     /module/cours/chapitre/{id}
+    defaults: { _controller: SMMICoursBundle:Cours:chapitre }
+
+smmi_cours_contenu:
+    path:     /module/cours/chapitre/contenu/{id}
+    defaults: { _controller: SMMICoursBundle:Cours:contenu }
+
+smmi_cours_showquizz:
+    path:     /showquizz
+    defaults: { _controller: SMMICoursBundle:Cours:showquizz }
 

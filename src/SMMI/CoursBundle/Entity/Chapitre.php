@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Chapitre
  *
- * @ORM\Table(name="smmi_chapitre")
+ * @ORM\Table(name="cours_chapitre")
  * @ORM\Entity(repositoryClass="SMMI\CoursBundle\Repository\ChapitreRepository")
  */
 class Chapitre
@@ -37,10 +37,10 @@ class Chapitre
 
     /**
      * @ORM\ManyToOne(targetEntity="SMMI\CoursBundle\Entity\Cours", inversedBy="chapitres")
-     * @ORM\JoinColumn(nullable=false, name="cours_id", referencedColumnName="id")
+     * ORM\JoinColumn(nullable=true, name="cours_id", referencedColumnName="id")
      */
     private $cours;
-    
+
     /**
      * Get id
      *

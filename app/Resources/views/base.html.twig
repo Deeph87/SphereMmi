@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="icon" type="image/png" href="{{ asset('bundles/public/images/logo.jpg') }}" />
   <title>{% block title %}Sphere MMI | {% endblock %}</title>
   <link rel="stylesheet" href="{{ asset('bundles/public/css/style.css') }}" type="text/css" />
   <link rel="stylesheet" href="{{ asset('bundles/public/css/normalize.css') }}" type="text/css" />
@@ -12,71 +12,95 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
-<div class="wrapper">
-  <header class="main-header">
-    <a href="{{ path('smmi_index_homepage') }}"><h1>Sphere MMI</h1></a>
-      <div>
-        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-        <a href="{{ path('fos_user_security_logout') }}">
-          {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-        </a>
-      </div>
-    <nav class="main-navbar">
+  <div class="responsive-menu">
+    <nav class="responsive-navbar">
+      <div class="close"><img src="{{ asset('bundles/public/images/close.png') }}" alt="close" /></div>
       <ul class="menu">
-        <li><a href="{{ path('smmi_cours_module') }}">Cours</a></li>
-        <li><a href="#">Exercices</a></li>
+        <li><a href="cours.html">Cours</a></li>
+        <li><a href="quizz.html">Exercices</a></li>
         <li><a href="#">Forum</a></li>
       </ul>
       <ul class="social">
         <li><a href="#"><img src="{{ asset('bundles/public/images/social_01.jpg') }}" alt="social-twitter" /></a></li>
-        <li><a href="#"><img src="{{ asset('bundles/public/images/social_02.jpg') }}" /></a></li>
-        <li><a href="#"><img src="{{ asset('bundles/public/images/social_03.jpg') }}" /></a></li>
-        <li><a href="#"><img src="{{ asset('bundles/public/images/social_04.jpg') }}" /></a></li>
+        <li><a href="#"><img src="{{ asset('bundles/public/images/social_02.jpg') }}" alt="social-facebook" /></a></li>
+        <li><a href="#"><img src="{{ asset('bundles/public/images/social_03.jpg') }}" alt="social-youtube" /></a></li>
+        <li><a href="#"><img src="{{ asset('bundles/public/images/social_04.jpg') }}" alt="social-instagram" /></a></li>
       </ul>
       <ul class="profil">
-        <li><a href="#">Profil</a></li>
-        <li><a href="{{ path('smmi_backoffice_liste') }}">gérer cours</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="{{ path('smmi_backoffice_liste') }}">Gérer Cours</a></li>
+        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
       </ul>
     </nav>
-  </header>
-    <div class="container">
+  </div>
+  <div class="wrapper">
+    <header class="main-header">
+      <a href="{{ path('smmi_index_homepage') }}"><div class="banner"></div></a>
+        <!--<div>
+          {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+          <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+          </a>
+        </div>-->
+      <nav class="main-navbar">
+        <div class="open"><img src="{{ asset('bundles/public/images/menu.png') }}" alt="menu" /></div>
+        <ul class="menu">
+          <li><a href="{{ path('smmi_cours_module') }}">Cours</a></li>
+          <li><a href="#">Exercices</a></li>
+          <li><a href="#">Forum</a></li>
+        </ul>
+        <ul class="social">
+          <li><a href="#"><img src="{{ asset('bundles/public/images/social_01.jpg') }}" alt="social-twitter" /></a></li>
+          <li><a href="#"><img src="{{ asset('bundles/public/images/social_02.jpg') }}" /></a></li>
+          <li><a href="#"><img src="{{ asset('bundles/public/images/social_03.jpg') }}" /></a></li>
+          <li><a href="#"><img src="{{ asset('bundles/public/images/social_04.jpg') }}" /></a></li>
+        </ul>
+        <ul class="profil">
+          <li><a href="#">Profil</a></li>
+          <li><a href="{{ path('smmi_backoffice_liste') }}">gérer cours</a></li>
+          <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        </ul>
+      </nav>
+    </header>
+      <div class="container">
 
-      {% block body %}
-      {% endblock %}
+        {% block body %}
+        {% endblock %}
 
-    </div>
-  <footer>
-    <div class="liens">
-      <span>Sphere MMI</span>
-      <ul class="l1">
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Condition d'utilisation</a></li>
-        <li><a href="#">Politique de confidentialité</a></li>
-      </ul>
-      <ul class="l2">
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Google+</a></li>
-        <li><a href="#">Youtube</a></li>
-        <li><a href="#">Tumblr</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">RSS</a></li>
-      </ul>
-    </div>
-    <form class="foot-form" action="#" method="post">
-      <p>Newsletter</p >
-      <input type="text" name="name" value="" placeholder="exemple@something.fr">
-      <button type="button" name="button">ENVOYER</button>
-    </form>
-    <p class="rights">
-      © SPHERE MMI, INC. ALL RIGHTS RESERVED.
-      <span>Site By Hestia</span>
-    </p>
-  </footer>
+      </div>
+    <footer>
+      <div class="liens">
+        <span>Sphere MMI</span>
+        <ul class="l1">
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Condition d'utilisation</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+        </ul>
+        <ul class="l2">
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Google+</a></li>
+          <li><a href="#">Youtube</a></li>
+          <li><a href="#">Tumblr</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+      <form class="foot-form" action="#" method="post">
+        <p>Newsletter</p >
+        <input type="text" name="name" value="" placeholder="exemple@something.fr">
+        <button type="button" name="button">ENVOYER</button>
+      </form>
+      <p class="rights">
+        © SPHERE MMI, INC. ALL RIGHTS RESERVED.
+        <span>Site By Hestia</span>
+      </p>
+    </footer>
 
-  {% block javascripts %}
-  {% endblock %}
+    {% block javascripts %}
+    {% endblock %}
+    <script src="{{ asset('bundles/public/js/main.js') }}"></script>
 
-</div>
+  </div>
 </body>
 </html>

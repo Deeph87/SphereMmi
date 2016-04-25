@@ -5,3 +5,15 @@ smmi_backoffice_liste:
 smmi_backoffice_add:
     path:     /ajouter-cours
     defaults: { _controller: SMMIBackOfficeBundle:BackOffice:add }
+
+smmi_backoffice_edit:
+    path:     /edit/{id}
+    defaults: { _controller: SMMIBackOfficeBundle:BackOffice:edit }
+
+smmi_backoffice_delete:
+    path:     /delete/{id}
+    defaults: { _controller: SMMIBackOfficeBundle:BackOffice:delete }
+
+smmi_backoffice_addmodule:
+    path:     /addmodule
+    defaults: { _controller: SMMIBackOfficeBundle:BackOffice:addmodule }

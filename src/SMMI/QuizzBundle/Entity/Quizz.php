@@ -29,11 +29,16 @@ class Quizz
     private $quizzNom;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="quizz_note", type="integer")
+     * @ORM\OneToMany(targetEntity="SMMI\QuizzBundle\Entity\Questions", mappedBy="quizz", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $quizzNote;
+    private $questions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SMMI\QuizzBundle\Entity\Reponses", mappedBy="quizz", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reponses;
 
 
     /**
@@ -55,7 +60,7 @@ class Quizz
     public function setQuizzNom($quizzNom)
     {
         $this->quizzNom = $quizzNom;
-
+    
         return $this;
     }
 
@@ -70,25 +75,77 @@ class Quizz
     }
 
     /**
-     * Set quizzNote
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reponses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add questions
      *
-     * @param integer $quizzNote
+     * @param \SMMI\QuizzBundle\Entity\Questions $questions
      * @return Quizz
      */
-    public function setQuizzNote($quizzNote)
+    public function addQuestion(\SMMI\QuizzBundle\Entity\Questions $questions)
     {
-        $this->quizzNote = $quizzNote;
-
+        $this->questions[] = $questions;
+    
         return $this;
     }
 
     /**
-     * Get quizzNote
+     * Remove questions
      *
-     * @return integer 
+     * @param \SMMI\QuizzBundle\Entity\Questions $questions
      */
-    public function getQuizzNote()
+    public function removeQuestion(\SMMI\QuizzBundle\Entity\Questions $questions)
     {
-        return $this->quizzNote;
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * Add reponses
+     *
+     * @param \SMMI\QuizzBundle\Entity\Reponses $reponses
+     * @return Quizz
+     */
+    public function addReponse(\SMMI\QuizzBundle\Entity\Reponses $reponses)
+    {
+        $this->reponses[] = $reponses;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reponses
+     *
+     * @param \SMMI\QuizzBundle\Entity\Reponses $reponses
+     */
+    public function removeReponse(\SMMI\QuizzBundle\Entity\Reponses $reponses)
+    {
+        $this->reponses->removeElement($reponses);
+    }
+
+    /**
+     * Get reponses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReponses()
+    {
+        return $this->reponses;
     }
 }

@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class CoursRepository extends EntityRepository
 {
+    public function getCoursWithChapitre()
+    {
+        $qb = $this
+            ->createQueryBuilder('c')
+            ->leftJoin('c.chapitres', 'chap')
+            ->addSelect('chap')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

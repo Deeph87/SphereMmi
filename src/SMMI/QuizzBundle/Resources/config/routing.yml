@@ -1,3 +1,3 @@
 smmi_quizz_homepage:
-    path:     /{slug}
-    defaults: { _controller: SMMIQuizzBundle:Quizz:index }
+    path:     /{id}
+    defaults: { _controller: SMMIQuizzBundle:Quizz:repondre }

@@ -21,7 +21,8 @@ class CreateUserCommand extends BaseCommand
             ->setName('smmi:user:create')
             ->getDefinition()->addArguments(array(
                 new InputArgument('firstname', InputArgument::REQUIRED, 'The firstname'),
-                new InputArgument('lastname', InputArgument::REQUIRED, 'The lastname')
+                new InputArgument('lastname', InputArgument::REQUIRED, 'The lastname'),
+                new InputArgument('acces', InputArgument::REQUIRED, 'The acces')
             ))
         ;
         $this->setHelp(<<<EOT
@@ -40,6 +41,7 @@ EOT
         $password   = $input->getArgument('password');
         $firstname  = $input->getArgument('firstname');
         $lastname   = $input->getArgument('lastname');
+        $acces   = $input->getArgument('acces');
         $inactive   = $input->getOption('inactive');
         $superadmin = $input->getOption('super-admin');
 
@@ -55,6 +57,7 @@ EOT
         $user->setSuperAdmin((Boolean) $superadmin);
         $user->setFirstName($firstname);
         $user->setLastName($lastname);
+        $user->setAcces($acces);
 
         $user_manager->updateUser($user);
 
@@ -94,6 +97,20 @@ EOT
                 }
             );
             $input->setArgument('lastname', $lastname);
+        }
+        if (!$input->getArgument('acces')) {
+            $acces = $this->getHelper('dialog')->askAndValidate(
+                $output,
+                'Please choose a acces:',
+                function($acces) {
+                    if (empty($acces)) {
+                        throw new \Exception('Acces can not be empty');
+                    }
+
+                    return $acces;
+                }
+            );
+            $input->setArgument('acces', $acces);
         }
     }
 }

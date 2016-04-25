@@ -5,6 +5,10 @@ namespace SMMI\CoursBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use SMMI\QuizzBundle\Form\QuizzType;
+use SMMI\QuizzBundle\Form\QuestionsType;
+use SMMI\QuizzBundle\Form\ReponsesType;
 
 class ChapitreType extends AbstractType
 {
@@ -17,6 +21,14 @@ class ChapitreType extends AbstractType
         $builder
             ->add('titre',     'text')
             ->add('content',   'textarea')
+            /*->add('quizz',   new QuizzType())
+            ->add('questions', new QuestionsType())
+            ->add('reponses', new ReponsesType)*/
+            /*->add('quizz', CollectionType::class, array(
+                'entry_type'     => new QuizzType()
+                //'allow_add'      => true,
+                //'allow_delete'   => true
+            ))*/
         ;
     }
     

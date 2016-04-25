@@ -1,0 +1,25 @@
+{% extends "SMMICoursBundle::layout.html.twig" %}
+{% block smmicours_chapitre %}
+    <div class="object">
+        <div class="object-chapter">
+            <span>
+                <p>
+                    <a href="{{ path('smmi_index_homepage') }}">Accueil</a>
+                    /
+                    <a href="{{ path('smmi_cours_module') }}">Module</a>
+                    {#/
+                    <a href="{{ path('smmi_cours_liste', {'id': chapitre.id+1}) }}">Cours</a>
+                    /
+                    <a href="{{ path('smmi_cours_chapitre', {'id': chapitre.id+1}) }}">Chapitres</a>#}
+                </p>
+            </span>
+            <h2>{{ cours.titre }}</h2>
+            {% for d in listChapitre %}
+                <div class="object-cours">
+                    <a href="{{ path('smmi_cours_contenu', {'id': d.id}) }}"><h3>{{ d.titre }}</h3></a>
+                    <p>{{ d.content|slice(0,200) }} ...</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,76 @@
+<?php
+
+namespace SMMI\QuizzBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Questions
+ *
+ * @ORM\Table(name="quizz_questions")
+ * @ORM\Entity(repositoryClass="SMMI\QuizzBundle\Repository\QuestionsRepository")
+ */
+class Questions
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="question", type="string", length=255)
+     */
+    private $question;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SMMI\QuizzBundle\Entity\Quizz", inversedBy="questions")
+     * ORM\JoinColumn(nullable=true, name="quizz_id", referencedColumnName="id")
+     */
+    private $quizz;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SMMI\QuizzBundle\Entity\Reponses", mappedBy="questions", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $reponses;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set question
+     *
+     * @param string $question
+     * @return Questions
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+    
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return string 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+}

@@ -3,107 +3,24 @@
 {% block smmicours_liste %}
     <div class="object">
         <p>Cours disponibles</p>
+        <input type="search" placeholder="Entrez un mot-clef" name="the_search">
+
         <div class="object-content course-list">
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
-            <div class="bloc course-item">
-                <a href="pagecour.html">
-                    <span>Maths</span>
-                </a>
-                <div class="progression-bar">
-                    <div style="width: 80%;" class="completion">
-                    </div>
-                </div>
-            </div>
+           {% for idModule in listCours %}
+                {%  if idModule.online == '1' %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_chapitre', {'id': idModule.id}) }}">
+                            <span>{{ idModule.titre }}</span>
+                        </a>
+                    <!--<div class="progression-bar">
+                        <div style="width: 80%;" class="completion">
+                        </div>
+                    </div>-->
+                     </div>
+                {% endif %}
+           {% endfor %}
         </div>
+
         <div id="loadMore"><span>Plus de cours</span></div>
     </div>
 {% endblock %}

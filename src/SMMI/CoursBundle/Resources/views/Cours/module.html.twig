@@ -1,19 +1,92 @@
 {% extends "SMMICoursBundle::layout.html.twig" %}
 
-{% block smmicours_liste %}
+{% block smmicours_module %}
     <div class="object">
         <p>Choisissez votre module</p>
+        <input type="search" placeholder="Entrez un mot-clef" name="the_search">
 
-        <div class="object-content course-list">
-            {% for module in listModules %}
-                <div class="bloc course-item">
-                    <a href="pagecour.html">
-                        <span>{{ module.module }}</span>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-
+        {% if acces == '1' %}
+            <div class="object-content course-list">
+                {% for s1 in promo1 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s1.id}) }}">
+                            <span>{{ s1.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elseif acces == '2' %}
+            <div class="object-content course-list">
+                {% for s2 in promo2 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s2.id}) }}">
+                            <span>{{ s2.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elseif acces == '3' %}
+            <div class="object-content course-list">
+                {% for s3 in promo3 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s3.id}) }}">
+                            <span>{{ s3.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elseif acces == '4' %}
+            <div class="object-content course-list">
+                {% for s4 in promo4 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s4.id}) }}">
+                            <span>{{ s4.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elseif acces == 'prof' %}
+            <h1>Semestre 1</h1>
+            <div class="object-content course-list">
+                {% for s1 in promo1 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s1.id}) }}">
+                            <span>{{ s1.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <h1>Semestre 2</h1>
+            <div class="object-content course-list">
+                {% for s2 in promo2 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s2.id}) }}">
+                            <span>{{ s2.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <h1>Semestre 3</h1>
+            <div class="object-content course-list">
+                {% for s3 in promo3 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s3.id}) }}">
+                            <span>{{ s3.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <h1>Semestre 4</h1>
+            <div class="object-content course-list">
+                {% for s4 in promo4 %}
+                    <div class="bloc course-item">
+                        <a href="{{ path('smmi_cours_liste', {'id': s4.id}) }}">
+                            <span>{{ s4.nom }}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <div id="loadMore">
             <span>Plus de cours</span>
         </div>

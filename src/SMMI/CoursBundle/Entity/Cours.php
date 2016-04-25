@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cours
  *
- * @ORM\Table(name="smmi_cours")
+ * @ORM\Table(name="cours")
  * @ORM\Entity(repositoryClass="SMMI\CoursBundle\Repository\CoursRepository")
  */
 class Cours
@@ -31,23 +31,23 @@ class Cours
     /**
      * @var string
      *
-     * @ORM\Column(name="auteur", type="string", length=60)
+     * @ORM\Column(name="module", type="string", length=100)
      */
-    private $auteur;
+    private $module;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="promo", type="string", length=255)
+     * @ORM\Column(name="promo", type="string", length=5)
      */
     private $promo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="module", type="string", length=255)
+     * @ORM\Column(name="auteur", type="string", length=60)
      */
-    private $module;
+    private $auteur;
 
     /**
      * @var \DateTime
@@ -62,11 +62,11 @@ class Cours
     private $online = true;
 
     /**
-     * @ORM\OneToMany(targetEntity="SMMI\CoursBundle\Entity\Chapitre", mappedBy="cours", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="SMMI\CoursBundle\Entity\Chapitre", mappedBy="cours", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $chapitres;
-
+   
     /**
      * Get id
      *
@@ -124,29 +124,6 @@ class Cours
     }
 
     /**
-     * Set module
-     *
-     * @param string $module
-     * @return Cours
-     */
-    public function setModule($module)
-    {
-        $this->module = $module;
-    
-        return $this;
-    }
-
-    /**
-     * Get module
-     *
-     * @return string 
-     */
-    public function getModule()
-    {
-        return $this->module;
-    }
-
-    /**
      * Set date
      *
      * @param \DateTime $date
@@ -193,29 +170,6 @@ class Cours
     }
 
     /**
-     * Set promo
-     *
-     * @param string $promo
-     * @return Cours
-     */
-    public function setPromo($promo)
-    {
-        $this->promo = $promo;
-    
-        return $this;
-    }
-
-    /**
-     * Get promo
-     *
-     * @return string 
-     */
-    public function getPromo()
-    {
-        return $this->promo;
-    }
-    
-    /**
      * Constructor
      */
     public function __construct()
@@ -257,5 +211,51 @@ class Cours
     public function getChapitres()
     {
         return $this->chapitres;
+    }
+
+    /**
+     * Set module
+     *
+     * @param string $module
+     * @return Cours
+     */
+    public function setModule($module)
+    {
+        $this->module = $module;
+    
+        return $this;
+    }
+
+    /**
+     * Get module
+     *
+     * @return string 
+     */
+    public function getModule()
+    {
+        return $this->module;
+    }
+
+    /**
+     * Set promo
+     *
+     * @param string $promo
+     * @return Cours
+     */
+    public function setPromo($promo)
+    {
+        $this->promo = $promo;
+    
+        return $this;
+    }
+
+    /**
+     * Get promo
+     *
+     * @return string 
+     */
+    public function getPromo()
+    {
+        return $this->promo;
     }
 }

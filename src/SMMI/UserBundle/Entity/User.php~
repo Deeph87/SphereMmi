@@ -21,25 +21,25 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", length=255)
      */
-
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-
     private $lastname;
 
     /**
-     * @ORM\OneToMany(targetEntity="SMMI\CoursBundle\Entity\Cours", mappedBy="user", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=10)
      */
-    private $cours;
-
+    private $acces;
+    
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        
     }
 
     /**
